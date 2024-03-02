@@ -10,8 +10,6 @@ public class PlayerController : MonoBehaviour
     public enum PlayerState { Idle, Run, Death }
     PlayerState playerstate;
 
-    public bool IsPlayerDeath = false;
-
     // Start is called before the first frame update
     void Start()
     {
@@ -21,8 +19,8 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (IsPlayerDeath == true) return;
-
+        if (GameManager.Instance.IsPlayerDeath == true) return;
+        
         SetPlayerState();
         SetPlayerAnimation();
     }
@@ -46,7 +44,7 @@ public class PlayerController : MonoBehaviour
         }
         else
         { 
-        playerstate= PlayerState.Idle;
+            playerstate= PlayerState.Idle;
         }
     }
 
@@ -67,12 +65,13 @@ public class PlayerController : MonoBehaviour
 
     public void PlayerDeath()
     {
-        if (IsPlayerDeath == true) return;
+        if (GameManager.Instance.IsPlayerDeath == true) return;
 
         // if (animator == null) return; 이 함수는 "?" 와 같다.
         // animator.SetTrigger("Death");
         animator?.SetTrigger("Death");
-        IsPlayerDeath = true;
+        GameManager.Instance.IsPlayerDeath = true;
+        GameManager.Instance.GameOver();
     }
 
     public void PlayerMove() 
