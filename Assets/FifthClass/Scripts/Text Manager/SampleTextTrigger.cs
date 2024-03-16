@@ -8,10 +8,15 @@ public class SampleTextTrigger : MonoBehaviour
 
     private void Start()
     {
-        TriggerText(sampleText);
+        //TriggerText(sampleText);
     }
     public void TriggerText(SampleText[] sampleTexts) 
     {
         FindObjectOfType<SampleTextManager>().StartText(sampleTexts);
-    }   
+    }
+
+    public void TriggerText()
+    {
+        FindObjectOfType<SampleTextManager>().StartText(sampleText);
+    }
 }

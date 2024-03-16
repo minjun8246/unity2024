@@ -18,10 +18,6 @@ public class DialogueData : MonoBehaviour
         }
     }
 
-    public string jsonName;
-    public DialogueList dialouges = new DialogueList();
-    public Dictionary<int, Dialogue> dialogueDatas = new Dictionary<int, Dialogue>();
-
     private void Awake()
     {
         if (null == instance)
@@ -36,10 +32,14 @@ public class DialogueData : MonoBehaviour
         }
     }
 
+    public string jsonName;
+    public DialogueList dialouges = new DialogueList();
+    public Dictionary<int, Dialogue> dialogueDatas = new Dictionary<int, Dialogue>();
+
     public void LoadData()
     {
-        TextAsset jsonString = Resources.Load<TextAsset>($"JsonData/{jsonName}");
-        dialouges = JsonUtility.FromJson<DialogueList>(jsonString.text);
+        TextAsset jsonString = Resources.Load<TextAsset>($"JsonData/{jsonName}"); 
+        dialouges = JsonUtility.FromJson<DialogueList>(jsonString.text); 
 
         for (int i = 0; i < dialouges.dialogues.Length; i++)
         {

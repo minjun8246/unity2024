@@ -10,7 +10,7 @@ public class SampleText
     // NPC 아이콘 이미지의 이름
     public string ImageName;
     // NPC가 대화할 문장
-    public string[] sentenences;
+    public string[] sentences;
 }
 
 public class SampleTaxeList 
