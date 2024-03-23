@@ -9,7 +9,11 @@ public class heatchecker : MonoBehaviour
         if (other.gameObject.CompareTag("Monster")) 
         {
             Debug.Log("몬스터와 충돌 했습니다.");
-            Destroy(other.gameObject);
+            
+
+            Monster monster = other.gameObject.GetComponent<Monster>();
+
+            monster.TakeDamage();
         }
     }
 }

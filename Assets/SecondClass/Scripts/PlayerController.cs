@@ -73,8 +73,7 @@ public class PlayerController : MonoBehaviour
     private void SetAttack()
     {
         playerstate = PlayerState.Attack;
-        hitbox.enabled = true;
-        Invoke("SetATKoff", 0.5f);
+        StartCoroutine(ATKoff());
     }
 
     private void SetATKoff()
@@ -82,11 +81,12 @@ public class PlayerController : MonoBehaviour
         hitbox.enabled = false;
     }
 
-    //IEnumerable ATKoff() 
-    //{
-    //    playerstate = PlayerState.Attack;
-    //    hitbox.enabled = true;
-    //}
+    IEnumerator ATKoff() 
+    {
+        hitbox.enabled = true;
+        yield return new WaitForSeconds(0.5f);
+        hitbox.enabled = false;
+    }
 
     // 게임에서 애니메이션을 실행시키기 위해 Update문 선언할 함수이다.
     // 플레이어의 강태에 따라 다은 애니메이션을 실행해야하는데 
