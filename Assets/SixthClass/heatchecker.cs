@@ -15,5 +15,12 @@ public class heatchecker : MonoBehaviour
 
             monster.TakeDamage();
         }
+
+        if (other.gameObject.CompareTag("Player")) 
+        { 
+             PlayerHitController hitController = other.gameObject.GetComponent<PlayerHitController>();
+
+            hitController.TakeDamage();
+        }
     }
 }

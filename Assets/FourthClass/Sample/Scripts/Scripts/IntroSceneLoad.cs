@@ -11,4 +11,11 @@ public class IntroSceneLoad : MonoBehaviour
         Loading.LoadScens("GameScenes");
     }
 
+    public void GameQuit()
+    {
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+#endif
+        Application.Quit();
+    }
 }
